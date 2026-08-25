@@ -4,7 +4,7 @@ The full research idea and findings are here : [Idea-MATS-2027.pdf](https://gith
 
 ## Research question
 
-When an aligned language model is evaluated with the same prompt and weights, can changing only the batch size change its output? If so, can batch-invariant deterministic inference reduce this instability enough to matter for alignment evaluation?
+When the model evaluates the same prompt and weights only change the batch size variations that potentially leads to changing models output, because kernel implementations are batch variants.  I  test  whether  numerical  instability is enough  to  flip  model  top  token prediction on simple prompt (yes/on) example, and whether batch-invariant mitigates this.
 
 This project studies that question using MLX inference and the 4-bit model `mlx-community/Qwen2.5-0.5B-Instruct-4bit`. The deterministic condition uses `mlx-deterministic`, following the batch-invariance approach described in [Defeating Nondeterminism in LLM Inference](https://thinkingmachines.ai/blog/defeating-nondeterminism-in-llm-inference/).
 
