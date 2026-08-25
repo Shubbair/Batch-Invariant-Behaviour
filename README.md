@@ -1,5 +1,7 @@
 # Batch-Dependent Behaviour in Aligned Language Models
 
+The full research idea and findings are here [Idea-MATS-2027.pdf](here)
+
 ## Research question
 
 When an aligned language model is evaluated with the same prompt and weights, can changing only the batch size change its output? If so, can batch-invariant deterministic inference reduce this instability enough to matter for alignment evaluation?
@@ -23,19 +25,10 @@ Experiment 2 : Fixed prompt with patch sizes [1,2,4,8,16] , and 5 repeated run e
 Experiment 3 :  Deterministic (Batch Invariant) vs. normal mode , same prompt
 Repeating experiment 2, but this time with mlx-deterministic batch invariant kernel enabled. Result shows deterministic stabilised the decision on prompt.
 
-Batch          Normal Δ                        Det Δ                   Normal Flip          Det Flip
---------------------------------------------------------------------------------------------------
-1      	0.0000000000e+00        0.0000000000e+00           False                 False
-2     	6.2500000000e-02        1.2500000000e-01             False                 False
-4      	9.3750000000e-02        8.2031250000e-02             True                  False
-8      	7.0312500000e-02        8.2031250000e-02             True                  False
-16    	7.8125000000e-02       7.4218750000e-02              True                  False
-
-	
-
-	Even with 20 prompts, the result shows “batch invariance helps stability of the final 
+Even with 20 prompts, the result shows “batch invariance helps stability of the final 
 decision” (not reduce numerical noise)
 
+<img src="assets/fig4.png" width="60%"/>
 
 
 
