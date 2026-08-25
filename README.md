@@ -14,7 +14,7 @@ Using `mlx-community/Qwen2.5-0.5B-Instruct-4bit` model , and with deterministic 
 
 ### Experiment 1 *Residual stream divergence from batch sizes*
 
-Code : [experiment#1.py](https://github.com/Shubbair/Batch-Invariant-Behaviour/blob/b9b7a3e1382bed1427605450b5aacc2d7036c08c/experiment1.py)
+Code : [experiment#1.py](https://github.com/Shubbair/Batch-Invariant-Behaviour/blob/3beda255c0c5b6b263bc75c738b14095ec1b7a3b/experiment1.py)
 
 With single prompt and single forward-pass, for the 24 layers , comparing batch-1 and batch-16 the divergence (L2 norm) start from 0 at the embedding layer then grows roughly to ~= 0.73 by the final layer, which approximately ~170x increase from numeric perturbation.
 That shows unstable computation propagating through layers.
@@ -25,7 +25,7 @@ That shows unstable computation propagating through layers.
 
 ### Experiment 2
 
-Code : [experiment#2.ipynb](https://github.com/Shubbair/Batch-Invariant-Behaviour/blob/b9b7a3e1382bed1427605450b5aacc2d7036c08c/experiment%232.ipynb)
+Code : [experiment#2.ipynb](https://github.com/Shubbair/Batch-Invariant-Behaviour/blob/3beda255c0c5b6b263bc75c738b14095ec1b7a3b/experiment%232.ipynb)
 
 Fixed prompt with patch sizes [1,2,4,8,16] , and 5 repeated run each , predictions flip from ‘Yes’ to ‘To’ at batch >= 4, max Δ logits ~=0.094, as shown :
 
@@ -36,14 +36,14 @@ Fixed prompt with patch sizes [1,2,4,8,16] , and 5 repeated run each , predictio
 
 Repeating experiment 2, but this time with mlx-deterministic batch invariant kernel enabled. Result shows deterministic stabilised the decision on prompt.
 
-Code : [experiment#3.ipynb](https://github.com/Shubbair/Batch-Invariant-Behaviour/blob/b9b7a3e1382bed1427605450b5aacc2d7036c08c/experiment%233.ipynb)
+Code : [experiment#3.ipynb](https://github.com/Shubbair/Batch-Invariant-Behaviour/blob/3beda255c0c5b6b263bc75c738b14095ec1b7a3b/experiment%233.ipynb)
 
 <img src="assets/fig3.png" width="60%"/>
 
 Even with 20 prompts, the result shows “batch invariance helps stability of the final 
 decision” (not reduce numerical noise)
 
-Code : [experiment#4.py](https://github.com/Shubbair/Batch-Invariant-Behaviour/blob/b9b7a3e1382bed1427605450b5aacc2d7036c08c/experimemt%234.py)
+Code : [experiment#4.py](https://github.com/Shubbair/Batch-Invariant-Behaviour/blob/3beda255c0c5b6b263bc75c738b14095ec1b7a3b/experimemt%234.py)
 
 
 <img src="assets/fig4.png" width="60%"/>
